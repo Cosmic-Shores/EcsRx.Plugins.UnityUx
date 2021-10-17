@@ -124,7 +124,7 @@ sealed class RootPresenter : ICustomGroupSystem {
         // handle relevant changes
         component.Save.TakeUntil(destroy).Subscribe(_ => Save(component));
         
-        VisualElement interactableRoot; // container add dynamic ui onto
+        VisualElement interactableRoot; // container to add dynamic ui onto
         _uxBindingService.PopulateChild(UxContext.CreateRootContext(_destroy, _logger), interactableRoot, component);
     }
 
