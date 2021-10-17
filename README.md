@@ -8,7 +8,7 @@ A minimalistic MVVM framework for the new Unity UI Toolkit build on [https://git
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 ## Requirements
-You need an non LTS version of Unity 2021.1 or newer (older versions might not work).
+You need a non LTS version of Unity 2021.1 or newer (older versions might not work).
 
 Your project must contain the following libraries somewhere:
 - UPM: com.unity.modules.uielements (>= 1.0.0-preview.17; Official UPM Package; Name: UI Toolkit)
@@ -33,21 +33,41 @@ To use this plugin you have to load both these plugins in your application.
 - UnityUxPlugin
 
 The following snippet ilustrates how a mvvm binding can be created.
-Your `IUxBinder` ties the elements from the binding to their models properties they should be syncronized with.
-This has some boilerplate code but the provided extensions most cases very simplistic and it's very flexible.
 
-With the `IUxBindingService` you can later make use of your `SettingsComponent` and the view binding that you have empowered it with.
+#### UXML View
+```xml
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Settings">
+        <ui:ScrollView name="SettingsContent">
+            <ui:Foldout text="General">
+                <ui:HelpBox text="Some settings are only applied after restarting the game." message-type="Info" />
+                <ui:TextField label="Player name" name="PlayerName" value="" />
+                <ui:SliderInt label="Auto save after turns" name="AutoSaveAfterTurns" low-value="0" high-value="10" page-size="1" value="1" />
+                <ui:TextField label=" " class="slider-value" name="AutoSaveAfterTurnsLabel" value="1" />
+                <ui:Toggle label="Discord rich experience" name="EnableDiscordRichExperience" />
+                <ui:Toggle label="Provide logs to the developer" name="AllowLogUpload" />
+            </ui:Foldout>
+            <ui:Foldout text="Audio">
+                <ui:Slider label="Master Volume" name="MasterVolume" low-value="0" high-value="100" page-size="1" value="100" />
+                <ui:TextField label=" " class="slider-value" name="MasterVolumeLabel" value="100%" />
+                <ui:Slider label="Music Volume" name="MusicVolume" low-value="0" high-value="100" page-size="1" value="100" />
+                <ui:TextField label=" " class="slider-value" name="MusicVolumeLabel" value="100%" />
+                <ui:Slider label="SFX Volume" name="SfxVolume" low-value="0" high-value="100" page-size="1" value="100" />
+                <ui:TextField label=" " class="slider-value" name="SfxVolumeLabel" value="100%" />
+            </ui:Foldout>
+        </ui:ScrollView>
+        <ui:VisualElement class="button-row">
+            <ui:Button text="Save" name="Save" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
+```
 
+#### UxComponent
 ```cs
-using EcsRx.Groups;
-using EcsRx.Groups.Observable;
-using EcsRx.Plugins.GroupBinding.Attributes;
 using EcsRx.Plugins.UnityUx;
-using Serilog;
-using SystemsRx.Infrastructure.Dependencies;
-using SystemsRx.Infrastructure.Extensions;
+using System;
 using UniRx;
-using UnityEngine.UIElements;
 
 sealed class SettingsComponent : IUxComponent {
     public IReactiveProperty<string> PlayerName { get; set; }
@@ -58,6 +78,16 @@ sealed class SettingsComponent : IUxComponent {
     public IReactiveProperty<float> SfxVolume { get; set; }
     public ISubject<Unit> Save { get; } = new Subject<Unit>();
 }
+```
+
+#### UxBinder
+Your `IUxBinder` ties the elements from the binding to their models properties they should be syncronized with.
+This has some boilerplate code but the provided extensions most cases very simplistic and it's very flexible.
+
+```cs
+using EcsRx.Plugins.UnityUx;
+using UniRx;
+using UnityEngine.UIElements;
 
 sealed class SettingsBinder : IUxBinder<SettingsComponent> {
     public VisualElement CreateBoundView(SettingsComponent component, UxContext context) {
@@ -88,6 +118,21 @@ sealed class SettingsBinder : IUxBinder<SettingsComponent> {
         element.Q<TextField>($"{name}Label").BindValue(rxProperty.Select(value => $"{value:F1}%").TakeUntil(context));
     }
 }
+```
+
+#### Final-Usage / Presenter & Module
+With the `IUxBindingService` you can later make use of your `SettingsComponent` and the view binding that you have empowered it with.
+
+```cs
+using EcsRx.Groups;
+using EcsRx.Groups.Observable;
+using EcsRx.Plugins.GroupBinding.Attributes;
+using EcsRx.Plugins.UnityUx;
+using Serilog;
+using System;
+using SystemsRx.Infrastructure.Dependencies;
+using SystemsRx.Infrastructure.Extensions;
+using UniRx;
 
 sealed class RootPresenter : ICustomGroupSystem {
     private readonly ISubject<Unit> _destroy = new Subject<Unit>();
@@ -142,6 +187,7 @@ sealed class MyModule : IDependencyModule {
 }
 ```
 
+#### Scope of possibilities
 Apart from the simplest method in the `IUxBindingService` shown above it also supports more complicated scenarios like an `IUxComponent` embed inside of an IObservable or even a changing list by using `IReadOnlyReactiveCollection<IUxComponent>`.
 
 The whole idea behind this is to also use the `IUxBindingService` inside of your IUxBinder if necessary to be able to bind nested `IUxComponent` structures.
