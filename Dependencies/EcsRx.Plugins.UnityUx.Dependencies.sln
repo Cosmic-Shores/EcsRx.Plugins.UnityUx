@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcsRx.Plugins.UnityUx.Dependencies", "EcsRx.Plugins.UnityUx.Dependencies.csproj", "{B4409D17-F23D-41CA-AB78-EA0C9A75342E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4409D17-F23D-41CA-AB78-EA0C9A75342E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4409D17-F23D-41CA-AB78-EA0C9A75342E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4409D17-F23D-41CA-AB78-EA0C9A75342E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4409D17-F23D-41CA-AB78-EA0C9A75342E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1193F5A6-76F3-40FE-A5A2-3DD1BBDAA2F8}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,11 @@
+{
+    "name": "com.ecsrx.plugins.unityux.deps",
+    "displayName": "EcsRx UnityUx Plugin",
+    "version": "0.1.0",
+    "unity": "2021.1",
+    "author": {
+        "name": "Jonas Fischer",
+        "email": "cosmicshoresdev@gmail.com",
+        "url": "https://github.com/Cosmic-Shores/EcsRx.Plugins.UnityUx"
+    }
+}
