@@ -143,4 +143,5 @@ sealed class MyModule : IDependencyModule {
 ```
 
 Apart from the simplest method in the `IUxBindingService` shown above it also supports more complicated scenarios like an `IUxComponent` embed inside of an IObservable or even a changing list by using `IReadOnlyReactiveCollection<IUxComponent>`.
+
 The whole idea behind this is to also use the `IUxBindingService` inside of your IUxBinder if necessary to be able to bind nested `IUxComponent` structures.
