@@ -40,7 +40,6 @@ The following snippet ilustrates how a mvvm binding can be created.
     <ui:VisualElement name="Settings">
         <ui:ScrollView name="SettingsContent">
             <ui:Foldout text="General">
-                <ui:HelpBox text="Some settings are only applied after restarting the game." message-type="Info" />
                 <ui:TextField label="Player name" name="PlayerName" value="" />
                 <ui:SliderInt label="Auto save after turns" name="AutoSaveAfterTurns" low-value="0" high-value="10" page-size="1" value="1" />
                 <ui:TextField label=" " class="slider-value" name="AutoSaveAfterTurnsLabel" value="1" />
