@@ -19,7 +19,7 @@ Your project must contain the following libraries somewhere:
 
 ## Installation
 You have the following options:
-1. The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+1. The package is available on the [openupm registry](https://openupm.com). You can install it via [openupm-cli](https://github.com/openupm/openupm-cli). (recommended)
 ```
 openupm add com.ecsrx.plugins.unityux
 ```
