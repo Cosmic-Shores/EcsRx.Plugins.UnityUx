@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Reactive;
+using System.Reactive.Linq;
 using Serilog;
-using UniRx;
 
 namespace EcsRx.Plugins.UnityUx {
     public sealed class UxContext {

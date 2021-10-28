@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using UniRx;
+using System.Reactive.Data;
 using UnityEngine.UIElements;
 
 namespace EcsRx.Plugins.UnityUx {

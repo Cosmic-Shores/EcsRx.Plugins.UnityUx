@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
-using UniRx;
+using System.Reactive;
+using System.Reactive.Data.Linq;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 
 namespace EcsRx.Plugins.UnityUx {
     public static class ObservableExtensions {
