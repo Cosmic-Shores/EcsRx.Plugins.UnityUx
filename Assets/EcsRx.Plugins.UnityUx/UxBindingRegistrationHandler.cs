@@ -5,7 +5,6 @@ using SystemsRx.Attributes;
 using SystemsRx.Executor.Handlers;
 using SystemsRx.Extensions;
 using SystemsRx.Systems;
-using UniRx;
 
 namespace EcsRx.Plugins.UnityUx {
     [Priority(25)]

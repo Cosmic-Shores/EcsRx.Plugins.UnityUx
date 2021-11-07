@@ -1,0 +1,2 @@
+This is a temporary solution while https://github.com/dotnet/reactive/issues/1628 is open and a custom System.Reactive.dll is required for this to work.
+Once that's solved this folder will be removed and NuGet will be used instead

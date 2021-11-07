@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reactive;
+using Rx.Data;
+using System.Reactive.Linq;
+using System.Reactive.Subjects;
 using System.Runtime.CompilerServices;
-using UniRx;
 using UnityEngine.UIElements;
 
 namespace EcsRx.Plugins.UnityUx {

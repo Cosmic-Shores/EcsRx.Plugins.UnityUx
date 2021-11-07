@@ -1,16 +1,17 @@
 {
     "name": "EcsRx.Plugins.UnityUx",
     "rootNamespace": "EcsRx.Plugins.UnityUx",
-    "references": [
-        "UniRx",
-        "UnityEngine.UIElementsModule"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
+    "overrideReferences": true,
     "precompiledReferences": [
-        "Serilog.dll"
+        "Serilog.dll",
+        "System.Reactive.dll",
+        "SystemsRx.dll",
+        "SystemsRx.Infrastructure.dll",
+        "Rx.Data.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],
