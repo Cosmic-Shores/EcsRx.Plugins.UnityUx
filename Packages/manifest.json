@@ -4,13 +4,14 @@
       "name": "package.openupm.com",
       "url": "https://package.openupm.com",
       "scopes": [
-        "com.openupm"
+        "com.openupm",
+        "com.rx.unity"
       ]
     }
   ],
   "dependencies": {
     "com.ecsrx.plugins.unityux.deps": "file:../Dependencies/bin/Debug/netstandard2.0",
-    "com.system.reactive.unity": "file:../../System.Reactive.Unity/Assets/Src/Scripts",
+    "com.rx.unity": "1.0.0",
     "com.unity.2d.animation": "7.0.0",
     "com.unity.2d.pixel-perfect": "5.0.1",
     "com.unity.2d.psdimporter": "6.0.0",

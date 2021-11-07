@@ -6,11 +6,12 @@
       "source": "local",
       "dependencies": {}
     },
-    "com.system.reactive.unity": {
-      "version": "file:../../System.Reactive.Unity/Assets/Src/Scripts",
+    "com.rx.unity": {
+      "version": "1.0.0",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
     },
     "com.unity.2d.animation": {
       "version": "7.0.0",

@@ -12,6 +12,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Rx.Data">
+      <HintPath>lib\Rx.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Rx.Extendibility">
+      <HintPath>lib\Rx.Extendibility.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive">
+      <HintPath>lib\System.Reactive.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="package.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -30,6 +30,7 @@ MonoBehaviour:
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.openupm
+    - com.rx.unity
     m_IsDefault: 0
     m_Capabilities: 0
   m_UserSelectedRegistryName: package.openupm.com
@@ -37,6 +38,6 @@ MonoBehaviour:
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -830
-    m_OriginalInstanceId: -834
+    m_UserModificationsInstanceId: -828
+    m_OriginalInstanceId: -832
   m_LoadAssets: 0
