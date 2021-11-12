@@ -16,11 +16,14 @@ Your project must contain the following libraries somewhere:
 - System.Reactive.dll (>= 5.0.0; eg. from NuGet*)
 - Rx.Extendibility.dll (>= 1.0.2; eg. from NuGet*)
 - Rx.Data.dll (>= 1.0.2; eg. from NuGet*)
-- Rx.Unity.dll (>= 1.0.0; eg. from openupm: com.rx.unity)
 - SystemsRx.dll (>= 5.1.0; eg. from NuGet)
 - SystemsRx.Infrastructure.dll (>= 5.1.0; eg. from NuGet)
 
 \* needs to be build from source and as System.Reactive still needs a minor change that hasn't been integrated yet. Since System.Reactive is also signed Rx.Extendibility and Rx.Data also need to be recompiled to work with an unsigned version of System.Reactive. You can aquire the DLLs by checking out [Rx.Unity](https://github.com/Cosmic-Shores/Rx.Unity) and running `./build-dependencies.bat` in the repository root (you need docker with buildkit for this). After this the required DLLs can be found in `./Dependencies/out/`.
+
+Openupm dependencies:
+- UPM: com.unity.modules.uielements (>= 1.0.0; Official UPM Package; Name: UI Toolkit)
+- Rx.Unity.dll (>= 1.0.0; openupm: com.rx.unity)
 
 ### For mayor version 1: [![Unity 2021.1+](https://img.shields.io/badge/unity-2021.1%2B-blue.svg)](https://unity3d.com/get-unity/download)
 _About_: Uses **UniRx**
