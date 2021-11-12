@@ -1,16 +1,31 @@
 # About
 A minimalistic MVVM framework for the new Unity UI Toolkit build on [https://github.com/EcsRx/ecsrx](EcsRx).
 
-[![Unity 2021.1+](https://img.shields.io/badge/unity-2021.1%2B-blue.svg)](https://unity3d.com/get-unity/download)
 [![Build Status](https://github.com/Cosmic-Shores/EcsRx.Plugins.UnityUx/actions/workflows/publish.yml/badge.svg)](https://github.com/Cosmic-Shores/EcsRx.Plugins.UnityUx/actions)
 [![openupm](https://img.shields.io/npm/v/com.ecsrx.plugins.unityux?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.ecsrx.plugins.unityux/)
 [![License](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Cosmic-Shores/EcsRx.Plugins.UnityUx/blob/main/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-## Requirements
-You need a non LTS version of Unity 2021.1 or newer (older versions might not work).
+## Requirements / Versions
+### Since mayor version 2: [![Unity 2021.2+](https://img.shields.io/badge/unity-2021.2%2B-blue.svg)](https://unity3d.com/get-unity/download)
+_About_: Uses **Rx.Unity** and **System.Reactive** instead of UniRx.
+You need Unity 2021.2 or newer.
 
 Your project must contain the following libraries somewhere:
+- Serilog.dll (>= 2.0.0; eg. from NuGet)
+- System.Reactive.dll (>= 5.0.0; eg. from NuGet*)
+- Rx.Extendibility.dll (>= 1.0.2; eg. from NuGet*)
+- Rx.Data.dll (>= 1.0.2; eg. from NuGet*)
+- Rx.Unity.dll (>= 1.0.0; eg. from openupm: com.rx.unity)
+- SystemsRx.dll (>= 5.1.0; eg. from NuGet)
+- SystemsRx.Infrastructure.dll (>= 5.1.0; eg. from NuGet)
+
+\* needs to be build from source and as System.Reactive still needs a minor change that hasn't been integrated yet. Since System.Reactive is also signed Rx.Extendibility and Rx.Data also need to be recompiled to work with an unsigned version of System.Reactive. You can aquire the DLLs by checking out [Rx.Unity](https://github.com/Cosmic-Shores/Rx.Unity) and running `./build-dependencies.bat` in the repository root (you need docker with buildkit for this). After this the required DLLs can be found in `./Dependencies/out/`.
+
+### For mayor version 1: [![Unity 2021.1+](https://img.shields.io/badge/unity-2021.1%2B-blue.svg)](https://unity3d.com/get-unity/download)
+_About_: Uses **UniRx**
+You need a non LTS version of Unity 2021.1 or newer (older versions might not work).
+
 - UPM: com.unity.modules.uielements (>= 1.0.0-preview.17; Official UPM Package; Name: UI Toolkit)
 - Serilog.dll (>= 2.0.0; eg. from NuGet)
 - UniRx.dll (>= 7.1.0; eg. from the asset store or from openupm: com.neuecc.unirx)
@@ -31,6 +46,8 @@ openupm add com.ecsrx.plugins.unityux
 ### Usage
 To use this plugin you have to load both these plugins in your application.
 - UnityUxPlugin
+
+If you are using version 2 you will have to replace the **UniRx** using with a couple different ones but that should be fairly staight forward.
 
 The following snippet ilustrates how a mvvm binding can be created.
 
