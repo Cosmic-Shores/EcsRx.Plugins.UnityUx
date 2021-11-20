@@ -151,6 +151,11 @@ namespace EcsRx.Plugins.UnityUx {
             return new HoverObservable(source);
         }
 
+        public static IUxComponent ToUxComponent(this VisualElement source) {
+            if (source is null) throw new ArgumentNullException(nameof(source));
+            return new StaticComponent(source);
+        }
+
         private class ChangeEventObservable<T> : IObservable<ChangeEvent<T>> {
             private readonly INotifyValueChanged<T> _source;
             private Subject<ChangeEvent<T>> _subject;
