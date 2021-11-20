@@ -273,11 +273,11 @@ namespace EcsRx.Plugins.UnityUx {
 
             [Conditional("DEBUG")]
             private void LogChange(string methodName, object change) {
-                _logger.Verbose($"{nameof(UxComponentReactiveCollectionBinder<T>)}.{methodName} {{@UxComponentChange}}", change);
+                _logger.Verbose($"{nameof(UxComponentReactiveCollectionBinder<T>)}.{methodName} {{UxComponentChange}}", change);
             }
 
             private void LogChangeError(Exception exception, string methodName, object change) {
-                _logger.Error(exception, $"{nameof(UxComponentReactiveCollectionBinder<T>)}.{methodName} failed! {{@UxComponentChange}}", change);
+                _logger.Error(exception, $"{nameof(UxComponentReactiveCollectionBinder<T>)}.{methodName} failed! {{UxComponentChange}}", change);
             }
         }
     }

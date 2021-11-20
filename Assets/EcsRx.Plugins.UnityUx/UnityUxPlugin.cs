@@ -9,7 +9,7 @@ using SystemsRx.Systems;
 namespace EcsRx.Plugins.UnityUx {
     public sealed class UnityUxPlugin : ISystemsRxPlugin {
         public string Name => "Unity Ux Plugin";
-        public Version Version { get; } = new Version("2.0.2");
+        public Version Version { get; } = new Version("2.0.3");
 
         public void SetupDependencies(IDependencyContainer container) {
             container.Bind<IUxBindingStore, UxBindingStore>(x => x.AsSingleton());
