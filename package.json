@@ -1,0 +1,18 @@
+{
+    "name": "com.ecsrx.plugins.unityux",
+    "displayName": "EcsRx UnityUx Plugin",
+    "version": "2.0.3",
+    "unity": "2021.2",
+    "description": "A minimalistic MVVM framework for the new Unity UI Toolkit build on EcsRx.",
+    "keywords": [ "ecs", "rx", "reactive patterns", "mvvm", "unity", "ui toolkit", "ui elements", "binding", "unityux", "minimalistic", "lightweight", "game-development" ],
+    "category": "gui",
+    "dependencies": {
+        "com.rx.unity": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0"
+    },
+    "author": {
+        "name": "Jonas Fischer",
+        "email": "cosmicshoresdev@gmail.com",
+        "url": "https://github.com/Cosmic-Shores/EcsRx.Plugins.UnityUx"
+    }
+}
