@@ -6,6 +6,7 @@ using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Runtime.CompilerServices;
 using UnityEngine.UIElements;
+using UnityEngine;
 
 namespace EcsRx.Plugins.UnityUx {
     // TODO find a way to have these methods use the Subscribe extension which passes a logger in, in a clean way!
@@ -71,6 +72,14 @@ namespace EcsRx.Plugins.UnityUx {
             textObservable.Subscribe(text => textElement.text = text);
         }
 
+        public static void BindText(this HelpBox helpBox, IObservable<string> textObservable) {
+            if (helpBox is null)
+                throw new ArgumentNullException(nameof(helpBox));
+            if (textObservable is null)
+                throw new ArgumentNullException(nameof(textObservable));
+            textObservable.Subscribe(text => helpBox.text = text);
+        }
+
         public static void BindEnableInClassList(this VisualElement source, string className, IObservable<bool> enableObservable) {
             if (source is null)
                 throw new ArgumentNullException(nameof(source));
@@ -100,6 +109,46 @@ namespace EcsRx.Plugins.UnityUx {
                 throw new ArgumentNullException(nameof(source));
 
             source.style.display = new StyleEnum<DisplayStyle>(displayed ? DisplayStyle.Flex : DisplayStyle.None);
+        }
+
+        public static void BindBackgroundImage(this VisualElement source, IObservable<Background> backgroundObservable) {
+            if (source is null)
+                throw new ArgumentNullException(nameof(source));
+            if (backgroundObservable is null)
+                throw new ArgumentNullException(nameof(backgroundObservable));
+            backgroundObservable.Subscribe(background => source.style.backgroundImage = background != null ? background : new StyleBackground(StyleKeyword.None));
+        }
+
+        public static void BindBackgroundImage(this VisualElement source, IObservable<Sprite> spriteObservable) {
+            if (source is null)
+                throw new ArgumentNullException(nameof(source));
+            if (spriteObservable is null)
+                throw new ArgumentNullException(nameof(spriteObservable));
+            spriteObservable.Subscribe(sprite => source.style.backgroundImage = sprite != null ? Background.FromSprite(sprite) : new StyleBackground(StyleKeyword.None));
+        }
+
+        public static void BindBackgroundImage(this VisualElement source, IObservable<Texture2D> texture2dObservable) {
+            if (source is null)
+                throw new ArgumentNullException(nameof(source));
+            if (texture2dObservable is null)
+                throw new ArgumentNullException(nameof(texture2dObservable));
+            texture2dObservable.Subscribe(texture2d => source.style.backgroundImage = texture2d != null ? Background.FromTexture2D(texture2d) : new StyleBackground(StyleKeyword.None));
+        }
+
+        public static void BindBackgroundImage(this VisualElement source, IObservable<VectorImage> vectorImageObservable) {
+            if (source is null)
+                throw new ArgumentNullException(nameof(source));
+            if (vectorImageObservable is null)
+                throw new ArgumentNullException(nameof(vectorImageObservable));
+            vectorImageObservable.Subscribe(vectorImage => source.style.backgroundImage = vectorImage != null ? Background.FromVectorImage(vectorImage) : new StyleBackground(StyleKeyword.None));
+        }
+
+        public static void BindBackgroundImage(this VisualElement source, IObservable<RenderTexture> renderTextureObservable) {
+            if (source is null)
+                throw new ArgumentNullException(nameof(source));
+            if (renderTextureObservable is null)
+                throw new ArgumentNullException(nameof(renderTextureObservable));
+            renderTextureObservable.Subscribe(renderTexture => source.style.backgroundImage = renderTexture != null ? Background.FromRenderTexture(renderTexture) : new StyleBackground(StyleKeyword.None));
         }
 
         public static void ClearChildren(this VisualElement source) {

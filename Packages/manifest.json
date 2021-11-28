@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "com.ecsrx.plugins.unityux.deps": "file:../Dependencies/bin/Debug/netstandard2.0",
-    "com.rx.unity": "1.0.0",
+    "com.rx.unity": "1.0.1",
     "com.unity.2d.animation": "7.0.2",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ide.rider": "3.0.7",
