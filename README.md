@@ -210,3 +210,17 @@ sealed class MyModule : IDependencyModule {
 Apart from the simplest method in the `IUxBindingService` shown above it also supports more complicated scenarios like an `IUxComponent` embed inside of an IObservable or even a changing list by using `IReadOnlyReactiveCollection<IUxComponent>`.
 
 The whole idea behind this is to also use the `IUxBindingService` inside of your IUxBinder if necessary to be able to bind nested `IUxComponent` structures.
+
+
+## Roadmap / future thoughts
+### Step 1: IUxViewModel & Factory
+- add something like IUxViewModel which can optionally be used on top of the IUxComponent to properly seperate pure UI bindings and the view provided for others to be used.
+- as this might result in way too many classes for simple cases make this (IUxViewModel) completely optional. Maybe make it possible for the IUxComponent to be the IUxViewModel too in which case a default factory will just return the same instance. (see next point)
+- add some kind of a factory interface to create an IUxComponent from an IUxViewModel (and do that internally in the framework if a IUxViewModel is passed insetad of an IUxComponent) - The resulting factory would end up being something like a controller/ component in angular. Make come up with some kind of convention to maybe nest the factory inside of the IUxViewModel (the factory might end up being internal but the IUxViewModel public - hence why can't do it switched; they basically belong together and the number of class required for this framework is quite high - hence why this might make it a little easier to work)
+
+### Step 2: getting rid of simple IUxBinders
+- by doing the things in _step 1_ the thought of trying to streamline IUxBinders becomes alot easier to imagine.
+- instead of using an IUxBinder one should also have the option to just decorate a IUxComponent with attributes and handle common bindings that way.
+- attributes on properties can be bound by a corresponding IUxBindingHandler in a similar fashion as it's done in knockout.js. (IUxBindingHandler would be a new thing as well ofc)
+- attributes on the IUxComponent class itself can be used to reference the uxml asset to be used in some way.
+- there should be an IUxTemplateProvider that can have different implementations to handle different use cases of getting hold of/ loading/ resolving the uxml asset. (one of them would be by using addressables if an addresaddress is specified in the attribute)
